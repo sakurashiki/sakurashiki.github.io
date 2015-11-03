@@ -1,0 +1,289 @@
+/* フォントの設定 */
+body {
+	font-family: Meiryo, 'メイリオ', ArialMT, Hiragino Kaku Gothic Pro, 'ヒラギノ角ゴ Pro W3', Osaka, Verdana, 'ＭＳ Ｐゴシック';
+	min-width : 640px;
+	min-height : 480px;
+}
+
+/** スマートフォン(タテ)想定のフォント **/
+@media screen and ( max-width : 599px ) {
+	section, #messageSample {
+	  font-size : 17px;
+	}
+}
+/** スマートフォン(ヨコ)・タブレット・PC想定のフォント **/
+@media screen and ( min-width : 600px ) {
+	section, #messageSample {
+	  font-size : 22px;
+	}
+}
+#messageSample {
+	font-weight : bold;
+	color : white;
+	text-shadow : 0px 0px 5px #000, 0px 0px 10px #000;
+}
+
+/* メッセージウィンドウのデザイン */
+.speakwindow {
+  background-color :rgba(0,0,0,0.5);
+  background: -webkit-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0)); /* Standard syntax */
+	top : 65%;
+	left : 0%;
+	width : 100%;
+	height : 10%;
+}
+#messageSample {
+	margin :20px auto;
+	width : 90%;
+	border : 1px solid gray;
+	padding : 3%;
+}
+
+.sideMenuButton {
+	width : 10%;
+	height : 20%;
+	margin : 0.5%;
+	padding : 0.5%;
+	text-align : center;
+	background-color : rgba(0,0,0,0.4);
+	color : rgba(255,255,255,1.0);
+	font-size: 70%;
+  transition-duration:0.3s;
+  border-radius : 3px;
+}
+.sideMenuButton:hover {
+	background-color : rgba(255,255,255,0.8);
+	color : rgba(0,0,0,1.0);
+}
+.menuTitle {
+	width:60%;
+	margin-left:-10%;
+	color : white;
+	text-shadow : 0px 0px 5px #000, 0px 0px 10px #000;
+	text-align : right;
+}
+.menuWindow {
+	position : fixed;
+	overflow : scroll;
+	width : 100%;
+	height : 100%;
+	margin : 0%;
+	left : 0%;
+	top : 0%;
+	z-index : 1000001;
+	display : none;
+	background-color: rgba(0,0,0,0.8);
+	opacity : 0.95;
+}
+.menuPage {
+	height : 100%;
+}
+
+.pageItem {
+	width:60%;
+	margin-left:-10%;
+	margin-top : 5px;
+	padding:8px;
+  padding-right : 20px;
+	border-radius:1000px;
+
+	text-shadow: 0px 0px 5px #000, 0px 0px 10px #000;
+  box-shadow : 5px 5px 5px black;
+
+  transition-duration:0.3s;
+  text-align : right;
+}
+.pageItem.enabled {
+	cursor : pointer;
+	color : #FFF;
+	background-color:rgba(62,95,71,0.8);
+}
+.pageItem.disabled { 
+	color : #555;
+	background-color:rgba(62,95,71,0.4);
+}
+.pageItem.enabled:hover {
+	background-color:rgba(0,0,0,0.6);
+	text-shadow: 0px 0px 5px #FFF, 0px 0px 10px #FFF;
+  box-shadow : 0px 0px 0px black;
+}
+
+/* システム画面(コンフィグ)のデザイン */
+.systemItem {
+	margin-left:-10%;
+	margin-top : 5px;
+}
+.systemItem:after {
+	clear : both;
+	content : "";
+	display : block;
+}
+
+.systemItem>.title {
+	float : left;
+	width:50%;
+	padding:8px;
+  padding-right : 20px;
+	border-radius:1000px;
+
+	text-shadow: 0px 0px 5px #000, 0px 0px 10px #000;
+
+  text-align : right;
+
+	color : #FFF;
+	background-color:rgba(130,130,130,0.8);
+
+	margin-right : 5px;
+}
+.systemItem>.meter {
+	float : left;
+	padding:8px;
+	border-radius:1000px;
+
+	text-shadow: 0px 0px 5px #000, 0px 0px 10px #000;
+  box-shadow : 5px 5px 5px black;
+	background-color:rgba(62,95,71,0.8);
+	height : 25px;
+	width : 190px;
+}
+
+.systemItem>.meter>.line {
+	background-color : black;
+	height: 5px;
+	padding-left: 12px;
+	padding-right : 12px;
+	margin : 10px 0px;
+}
+.systemItem>.meter>.pos {
+	background-color : rgba(200,200,200,1.0);
+	width : 24px;
+	height: 24px;
+	border-radius : 12px;
+	margin : 0px 0px;
+	box-shadow : 0px 0px 5px black;
+}
+.systemItem>.meter>.pos:hover {
+	background-color : rgba(255,255,255,1.0);
+	box-shadow : 5px 5px 25px black;
+}
+.systemItem>.meter {
+	float : left;
+	padding:8px;
+	border-radius:1000px;
+
+	text-shadow: 0px 0px 5px #000, 0px 0px 10px #000;
+  box-shadow : 5px 5px 5px black;
+	background-color:rgba(62,95,71,0.8);
+	height : 25px;
+	width : 190px;
+}
+
+.systemItem>.toggle {
+	float : left;
+	padding:8px;
+	border-radius:1000px;
+
+	text-shadow: 0px 0px 5px #000, 0px 0px 10px #000;
+  box-shadow : 5px 5px 5px black;
+	background-color:rgba(62,95,71,0.8);
+	height : 25px;
+	width : 110px;
+}
+.systemItem>.toggle>.back {
+	background-color : black;
+	height: 24px;
+	padding-left: 12px;
+	padding-right : 12px;
+	border-radius : 12px;
+	margin : 0px 0px;
+}
+.systemItem>.toggle>.back>.on {
+	color : rgba(100,100,200,1.0);
+}
+.systemItem>.toggle>.back>.off {
+	color : rgba(200,100,100,1.0);
+}
+.systemItem>.toggle>.pos {
+	background-color : rgba(200,200,200,1.0);
+	width : 54px;
+	height: 24px;
+	border-radius : 12px;
+	margin : 0px 0px;
+	box-shadow : 0px 0px 5px black;
+}
+.systemItem>.toggle>.pos:hover {
+	background-color : rgba(255,255,255,1.0);
+	box-shadow : 5px 5px 25px black;
+}
+
+.scrollbox {
+	position : relative;
+	width : 100%;
+	height : 300px;
+	margin : auto;
+	overflow : scroll;
+	overflow-x : hidden;
+	background-color : rgba(0,0,0,0.5);
+	border : 1px solid gray;
+}
+
+/* バッグログのデザイン */
+.backlog {
+	background-color: rgba(0,0,0,0.7);
+}
+.backlog>.line {
+	color : white;
+	padding : 1% 5%;
+	border-top : 1px dotted gray;
+  transition-duration:0.3s;
+}
+.backlog>.hasVoice {
+	cursor : pointer;
+}
+.backlog>.hasVoice:hover {
+	color : black;
+	background-color: rgba(255,255,255,1.0);
+}
+.backlog>.button {
+	cursor : pointer;
+	display : inline-block;
+	text-align : right;
+	color : white;
+	border :1px solid gray;
+	top : 0%;
+	right : 0%;
+	padding: 16px;
+	font-size : 30px;
+	background-color : rgba(200,0,0,1.0);
+}
+
+/* 分岐 */
+nav {
+	padding-top:20%;
+	background-color : rgba(0,0,0,0.5);
+}
+nav>div {
+	width:60%;
+	margin : 50px auto;
+	padding:8px;
+  padding-right : 20px;
+	border-radius:1000px;
+
+	text-shadow: 0px 0px 5px #000, 0px 0px 10px #000;
+  box-shadow : 5px 5px 5px black;
+
+  transition-duration:0.3s;
+  text-align : center;
+	cursor : pointer;
+	color : #FFF;
+	background-color:rgba(62,95,71,0.8);
+}
+nav>div:hover {
+	background-color:rgba(0,0,0,0.6);
+	text-shadow: 0px 0px 5px #FFF, 0px 0px 10px #FFF;
+  box-shadow : 0px 0px 0px black;
+}
+

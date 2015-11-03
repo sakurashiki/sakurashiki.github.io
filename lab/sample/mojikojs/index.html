@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<style>
+html,body{
+		background-color:black;
+}
+h1 {
+	display : none;
+}
+.bg, .touchme {
+	position : absolute;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position : center center;	
+}
+.bg {
+	top : 0%;
+	left : 0%;
+	width : 100%;
+	height : 100%;
+	background-image : url(img/cg/top.jpg);
+}
+.touchme {
+	top : 80%;
+	left : 0%;
+	width : 100%;
+	height : 15%;
+	background-color : rgba(255,255,255,0.5);
+	background-image : url(img/system/touchme.png);
+}
+#screen {
+	position : absolute;
+	width : 100%;
+	height : 100%;
+	top  : 0%;
+	left : 0%;
+	background-color:black;
+}
+</style>
+<title>無駄に悩む、駄道くん</title>
+</head>
+<h1>無駄に悩む、駄道くん</h1>
+<body onclick="location.href='01.html';void(0);" onkeydown="location.href='01.html';void(0);">
+	<div class="bg"></div>
+	<div class="touchme" id="button"></div>
+	<div id="screen"></div>
+<script>
+var button = document.getElementById("button");
+var shown = true;
+setInterval(function(){
+	if( shown ) {
+		button.style.display="none";
+		shown = false;
+	} else {
+		button.style.display="block";
+		shown = true;
+	}
+},500);
+var screenElem = document.getElementById("screen");
+var opacity=1.0;
+var timer = setInterval(function(){
+	opacity -= 0.01;
+	if( opacity < 0.0 ) {
+		clearInterval(timer);
+		screenElem.style.display = "none";
+	} else {
+		screenElem.style.opacity = opacity;
+	}
+},13);
+</script>
+</body>
+</html>

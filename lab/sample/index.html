@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og:http://ogp.me/ns#fb:http://ogp.me/ns/fb#">
+<head>
+	<!-- Compatibility flags -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<style>
+@font-face {
+  font-family: 'kfhimaji';
+  src: url("../font/kfhimaji.woff") format("woff");
+}
+html {
+	font-family: 'kfhimaji', meiryo, sans-serif;
+	background-color : black;
+	color : white;
+	overflow : hidden;
+	width : 100%;
+	height : 100%;
+}
+h1 {
+	text-align : center;
+	width : 100%;
+	position : absolute;
+	bottom : 0%;
+}
+	</style>
+	<title>さくらしき・らぼ - トップ</title>
+</head>
+<body>
+	<h1>下から選んで下さい<br/>↓</h1>
+	<script>
+(function(){
+	// 動作の周期(フレーム数)
+	var LOOP_CYCLE = 80;
+
+	var requestControlFrame = function(fn){ setTimeout(fn,1000/60); };
+	var h1 = document.querySelector("h1");
+	var currentFrame = 0;
+	var half = LOOP_CYCLE/2;
+	var doWorking = function(){
+		var cycleFrame = currentFrame%LOOP_CYCLE;
+		if( cycleFrame<half ) {
+			h1.style.bottom = 5*Math.sin((Math.PI*cycleFrame)/half)+"%";
+		} else {
+			h1.style.bottom = "0%";
+		}
+		requestControlFrame(doWorking);
+		currentFrame++;
+	};
+	doWorking();
+
+})();
+	</script>
+</body>
+</html>

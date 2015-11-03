@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<script src="js/leaping-min.js"></script>
+<script src="js/leaping-fade.js"></script>
+<script src="js/leaping-slidein.js"></script>
+<style>
+@font-face {
+  font-family: 'kfhimaji';
+  src: url("./font/kfhimaji.woff") format("woff");
+}
+html {
+  font-family: 'kfhimaji', sans-serif;
+  font-size: 180%;
+}
+section {
+	background-color : black;
+}
+#time {
+	display : none;
+	position : fixed;
+	background-color : rgba(255,255,255,0.7);
+	width : 100%;
+	height: 2%;
+	top : 95%;
+	left : 0%;
+	box-shadow : 0px 0px 10px white;
+}
+p {
+	text-shadow : 0px 0px 4px black, 2px 2px 0px black;
+}
+#gameover {
+	display : none;
+	position : fixed;
+	width : 100%;
+	height: 100%;
+	top : 0%;
+	left : 0%;
+	background-color: black;
+}
+#gameover>p{
+	text-align : center;
+	position : fixed;
+	width : 100%;
+	top : 40%;
+	text-align : center;
+	font-size: 150%;
+}
+.yes {
+	text-align : center;
+	padding: 3px;
+	background-color : rgba(0,0,150,0.5);
+	cursor : pointer;
+	transition-duration: 0.5s;
+}
+.yes:hover {
+	background-color : rgba(0,0,100,0.8);
+	box-shadow : 0px 0px 20px white;
+}
+.no {
+	text-align : center;
+	padding: 3px;
+	background-color : rgba(150,0,0,0.5);
+	cursor : pointer;
+	transition-duration: 0.5s;
+}
+.no:hover {
+	background-color : rgba(100,0,0,0.8);
+	box-shadow : 0px 0px 20px white;
+}
+</style>
+<title>焦燥の月</title>
+</head>
+<body>
+
+<!-- 開始 -->
+
+<section lp-bg="img/leaping.001.jpg" lp-touch="next" onclick="deleteTimer();startClock();" style="cursor:pointer;">
+	<p lp-speed="10" lp-y="82">制作 : @q_kwkw</p>
+	<p lp-y="90" class="blink">クリックorタッチで進行します</p>
+</section>
+
+
+<!-- 質問 -->
+
+<section class="question" lp-bg="img/leaping.002.jpg">
+	<p lp-speed="10" lp-y="55">もっと自分に自信を持ちたい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=9;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=1;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.003.jpg">
+	<p lp-speed="10" lp-y="55">もっと人の意見に耳を傾けたい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=8;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=2;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.004.jpg">
+	<p lp-speed="10" lp-y="55">趣味や恋愛で現実逃避がしたい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=8;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=2;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.005.jpg">
+	<p lp-speed="10" lp-y="55">他人の噂を気にしない強い心がほしい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=8;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=2;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.006.jpg">
+	<p lp-speed="10" lp-y="55">もっと流行に敏感でありたい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=7;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=3;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.007.jpg">
+	<p lp-speed="10" lp-y="55">もっと人を頼れるようになりたい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=9;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=1;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.008.jpg">
+	<p lp-speed="10" lp-y="55">一人で抱え込むのをやめたい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=10;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=0;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.009.jpg">
+	<p lp-speed="10" lp-y="55">ものごとをもっとポジティブに考えられるようになりたい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=8;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=2;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.010.jpg">
+	<p lp-speed="10" lp-y="55">もっと夢がほしい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=2;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=8;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.011.jpg">
+	<p lp-speed="10" lp-y="55">もっと現実主義でありたい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=8;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=2;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.012.jpg">
+	<p lp-speed="10" lp-y="55">もっと思いやりのある人間になりたい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=1;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=9;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.013.jpg">
+	<p lp-speed="10" lp-y="55">もっと人の気持ちを考えられる人間になりたい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=7;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=3;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.014.jpg">
+	<p lp-speed="10" lp-y="55">もっと相手の話を聞けるようになりたい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=10;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=0;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.015.jpg">
+	<p lp-speed="10" lp-y="55">もっと自分は努力ができる!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=7;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=3;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.016.jpg">
+	<p lp-speed="10" lp-y="55">努力をしない人間は報われない世界であって欲しい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=9;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=1;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.017.jpg">
+	<p lp-speed="10" lp-y="55">虚言癖を治したい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=7;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=3;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.018.jpg">
+	<p lp-speed="10" lp-y="55">歳をとりたくない!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=8;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=2;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.019.jpg">
+	<p lp-speed="10" lp-y="55">他人から見下されたくない!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=10;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=0;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.020.jpg">
+	<p lp-speed="10" lp-y="55">他人から悪口を言われたくない!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=10;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=0;">No</div>
+</section>
+
+<section class="question" lp-bg="img/leaping.021.jpg">
+	<p lp-speed="10" lp-y="55">恋人は2人以上欲しい!!</p>
+	<div lp-y="70" class="yes" lp-touch="next" onclick="score+=10;">Yes</div>
+	<div lp-y="80" class="no" lp-touch="next" onclick="score+=0;">No</div>
+</section>
+
+
+<!-- 終了 -->
+
+<section lp-touch="next" lp-action="slide-in" style="cursor:pointer;">
+	<h2 lp-y="10">嘘つき深刻度</h2>
+	<div lp-y="30" style="font-size:600%" id="score"></div>
+	<div lp-y="80" id="comment"></div>
+</section>
+
+<section lp-touch="next" lp-action="nope" style="cursor:pointer;">
+	<h2 lp-y="45">大丈夫、大丈夫!!</h2>
+</section>
+
+<section lp-touch="next" style="cursor:pointer;background-color:white;color:black;">
+	<h2 lp-y="10" lp-speed="25">嘘なんて、勢いで踏み潰すのです!!</h2>
+	<div lp-y="30" lp-speed="20">聴講者から考えるスキを奪うプレゼンテーションは</div>
+	<div lp-y="45" lp-speed="10" style="font-size:300%;">LeapingJS</div>
+	<div lp-y="75" lp-speed="20">さぁ、勢いで「まさかり」から身を守ろう！</div>
+</section>
+
+<section lp-bg="img/leaping.022.jpg" lp-action="fade">
+</section>
+<div id="time"></div>
+<div id="gameover" onclick="location.reload();">
+	<p>Game Over</p>
+</div>
+<script>
+var QUESTION_NUMBER = 10;
+var shown = true;
+var score = 0;
+var blinks = document.querySelectorAll(".blink");
+var gameover = document.querySelector("#gameover");
+var timer = setInterval(function(){
+	for( var i=0, length=blinks.length ; i<length ; i++ ) {
+		if( shown ) {
+			blinks[i].style.visibility = "hidden";
+		} else {
+			blinks[i].style.visibility = "visible";
+		}		
+	}
+	shown = shown?false:true;
+},500);
+var deleteTimer = function() {
+	clearInterval(timer);
+}
+var MAX_TIME = 60;
+var restTime = MAX_TIME;
+var time = document.getElementById("time");
+var clock = undefined;
+var startClock = function() {
+	time.style.display = "block";
+	var next = function () {
+		restTime--;
+		time.style.width = ((restTime*100)/MAX_TIME)+"%";
+		if( restTime === 30 ) {
+			time.style.backgroundColor = "rgba(255,100,100,0.7)";
+		}
+		if( restTime ) {
+			clock = setTimeout(next,1000);
+		} else {
+			stopClock();
+			showGameOver();
+		}
+	}
+	next();
+}
+var stopClock = function() {
+	time.style.display = "none";
+	clearTimeout(clock);
+}
+var showGameOver = function(){
+	gameover.style.opacity = 0.0;
+	gameover.style.display = "block";
+	var frame = 0;
+	var t = setInterval(function(){
+		frame ++;
+		gameover.style.opacity = frame/20.0;
+		if( frame === 20 ) {
+			setTimeout(function(){
+				location.reload();
+			},5000);
+		}
+	},13);
+}
+var list = document.querySelectorAll(".question");
+var questions = [];
+for( var i=0, length=list.length ; i<length ; i++ ) {
+	questions.push(list[i]);
+}
+
+var deleteNumber = questions.length - QUESTION_NUMBER;
+var parentNode = questions[0].parentNode;
+for( var i=0 ; i<deleteNumber ; i++ ) {
+	var c = parseInt(Math.random()*questions.length);
+	var removeDom = questions[c];
+	questions.splice(c,1);
+	parentNode.removeChild(removeDom);
+}
+for( var i=0 ; i<questions.length ; i++ ) {
+	var d = document.createElement("p");
+	d.setAttribute("class","questionNumber");
+	d.setAttribute("lp-y","0");
+	d.textContent = "("+(i+1)+"/"+QUESTION_NUMBER+")";
+	questions[i].appendChild(d);
+}
+var lastQuestion = questions[QUESTION_NUMBER-1];
+lastQuestion.addEventListener("click",function(){
+	stopClock();
+	document.getElementById("score").textContent = score+"%";
+	var comment = document.getElementById("comment");
+	if( score<23 ) {
+		comment.innerHTML = "自分は騙されているんじゃないかと<br/>思ったことはありませんか？";
+	} else if ( score<40 ) {
+		comment.innerHTML = "自分はもしかしたら空気が読めない人ではないかと<br/>思ったことはありませんか？";
+	} else if ( score<60 ) {
+		comment.innerHTML = "優しさの嘘よりも見栄の嘘の方が<br/>多くなっていると感じたことはありませんか？";
+	} else if ( score<77 ) {
+		comment.innerHTML = "周りの人間があなたの嘘に気付いていると<br/>感じたことはありませんか？";
+	} else {
+		comment.innerHTML = "周りから見えるあなたの印象は<br/>ほとんどが嘘なんだと思ったことはありませんか？";
+	}
+});
+
+</script>
+</body>
+</html>

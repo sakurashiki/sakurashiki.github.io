@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og:http://ogp.me/ns#fb:http://ogp.me/ns/fb#">
+<head>
+	<!-- Compatibility flags -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+	<!-- favicon/icon -->
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
+	<!-- Twittr -->
+	<meta name=twitter:card content="Summary">
+	<meta name=twitter:title content="さくらしき・らぼ">
+	<meta name=twitter:url content="http://qkwkw.github.io/lab">
+	<meta name=twitter:description content="さくらしきで開発された、JSエンジンを公開しています!!">
+	<meta name=twitter:image content="intro.jpg">
+
+	<!-- Facebook -->
+	<meta property=og:type content="website">
+	<meta property=og:url content="http://qkwkw.github.io/lab">
+	<meta property=og:locale content="ja_JP" >
+	<meta property=og:title content="さくらしき・らぼ">
+	<meta property=og:description content="さくらしきで開発された、JSエンジンを公開しています!!">
+	<meta property=og:image content="intro.jpg">
+	<meta property=og:site_name content="さくらしき・らぼ">
+
+	<!-- Google+ -->
+	<meta itemprop=name content="さくらしき・らぼ">
+	<meta itemprop=description content="さくらしきで開発された、JSエンジンを公開しています!!">
+	<meta itemprop=image content="intro.jpg">
+
+	<style>
+@font-face {
+  font-family: 'kfhimaji';
+  src: url("font/kfhimaji.woff") format("woff");
+}
+html {
+	font-family: 'kfhimaji', meiryo, sans-serif;
+	background-image : url(bg.jpg);
+	background-size : cover;
+	background-position : center bottom;
+	background-color : black;
+	touch-action : none;
+}
+html,body {
+	margin : 0;
+	padding : 0;
+	text-align : center;
+	color : white;
+	text-shadow : 0px 0px 5px black, 3px 3px 0px black;
+	width : 100%;
+}
+h1 {
+	margin :0;
+	padding :20px;
+}
+iframe {
+	width : 100%;
+	max-width : 850px;
+	height : 500px;
+	background-color : black;
+	margin : 0 auto;
+	border : 0;
+	margin-top : 30px;
+	box-shadow : 0px 0px 10px black;
+}
+ol {
+	max-width : 700px;
+	margin : 20px auto;
+	text-align : left;
+}
+li {
+	margin-bottom : 10px;
+	cursor : pointer;
+	transition-duration:0.5s
+}
+li:hover {
+	text-decoration : underline;
+	background-color : rgba(0,0,0,0.6);
+}
+footer {
+	padding-top : 30px;
+	padding-bottom :10px;
+}
+	</style>
+	<title>さくらしき・らぼ</title>
+</head>
+<body>
+	<h1>さくらしき・らぼ</h1>
+	<div>ぼくがつくったさいきょうのJSフレームワーク</div>
+	<iframe src="sample/index.html"></iframe>
+	<ol>
+		<li data-src="sample/comcomjs/index.html">ComComJS : アニメーション付き漫画を生成するコミック・ビューワー</li>
+		<li data-src="sample/mojikojs/index.html">MojikoJS : マルチプラットフォーム＆モバイルファーストなノベルゲームエンジン</li>
+		<li data-src="sample/leapingjs/index.html">LeapingJS : HTMLと画像ファイルだけシンプルに作れるプレゼンスライド用エンジン</li>
+		<li data-src="sample/webgleapingjs/index.html">WebGLeapingJS : 画像ファイルを3Dにより描画するプレゼンスライド用エンジン</li>
+		<!-- <li data-src="sample/pixyjs/index.html">FixyJS : HTMLでデータを定義するシンプルなシューティングゲームエンジン</li> -->
+	</ol>
+	<footer>- Copyright 2010-2015 さくらしき All Rights Reserved. -</footer>
+	<script>
+document.querySelector && (function(){
+	var lists = document.querySelectorAll("li");
+	var iframe = document.querySelector("iframe");
+	for( var i=0,length=lists.length ; i<length ; i++ ) {
+		lists[i].addEventListener("click",function(){
+			iframe.src = this.getAttribute("data-src");
+		});
+	}
+})();
+	</script>
+</body>
+</html>
