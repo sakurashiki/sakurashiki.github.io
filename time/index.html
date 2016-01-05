@@ -1,0 +1,61 @@
+<DOCTYPE html>
+<html lang='ja'>
+<head>
+<meta charset='UTF-8'>
+<style>
+html,body {
+  font-family: Times;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.time {
+  font-size: 5000%;
+  line-height: 100%;
+  margin-top: 5%;
+}
+</style>
+</head>
+<body>
+<div class='time'>
+  <span id='rest'>5:00</span>
+</div>
+<a href='./'>リスタート</a>
+<script>
+var startTime = (new Date()).getTime();
+var rest = document.querySelector('#rest');
+var body = document.querySelector('body');
+
+function render(){
+  var restTime = (301000+startTime-(new Date()).getTime()) / 1000;
+  if ( 0< restTime ) {
+    if( restTime < 60 ) {
+      body.style.backgroundColor = 'red';
+      if( 10 < restTime ) {
+        rest.style.color = 'white';
+      } else {
+        var clr = parseInt(123 + Math.sin((new Date()).getTime()*Math.PI/300)*122);
+        rest.style.color = 'rgb('+clr+','+clr+','+clr+')';
+      }
+    } else {
+      rest.style.color = 'black';
+      body.style.backgroundColor = 'white';
+    }
+    var min = parseInt(restTime/60);
+    var sec = parseInt(restTime%60);
+    if ( sec < 10 ) {
+      sec = '0' + sec;
+    }
+    rest.textContent= min+':'+sec;
+  } else {
+    rest.style.color = 'white';
+    body.style.backgroundColor = 'red';
+    rest.textContent= '0:00';
+  }
+  window.requestAnimationFrame(render);
+}
+render();
+
+</script>
+</body>
+</html>
